@@ -1,12 +1,13 @@
 package com.chendehe.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.chendehe.websocket.ServerMessage;
 import com.chendehe.exception.BaseException;
 import com.chendehe.exception.ResultUtil;
 import com.chendehe.service.UserService;
 import com.chendehe.vo.Page;
 import com.chendehe.vo.UserVo;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.slf4j.Logger;
@@ -71,7 +72,7 @@ public class UserController {
    */
   @PostMapping("/")
   ResponseEntity save(@RequestBody UserVo userVo) {
-    LOGGER.info("[UserController] user is:{}", JSONObject.toJSON(userVo));
+    LOGGER.info("[UserController] user is:{}", new Gson().toJson(userVo));
     try {
       return ResultUtil.success(service.save(userVo), HttpStatus.CREATED);
     } catch (Exception e) {
@@ -84,7 +85,7 @@ public class UserController {
    */
   @PutMapping("/{id}")
   ResponseEntity update(@RequestBody UserVo userVo, @PathVariable String id) {
-    LOGGER.info("[UserController] user is:{}, id is:{}", JSONObject.toJSON(userVo), id);
+    LOGGER.info("[UserController] user is:{}, id is:{}", new Gson().toJson(userVo), id);
     userVo.setId(id);
     try {
       return ResultUtil.success(service.update(userVo), HttpStatus.CREATED);
@@ -101,8 +102,8 @@ public class UserController {
     LOGGER.info("[UserController] id is:{}", id);
     try {
       service.delete(id);
-      JSONObject json = new JSONObject();
-      json.put("status", "success");
+      JsonObject json = new JsonObject();
+      json.addProperty("status", "success");
       return ResultUtil.success(json, HttpStatus.NO_CONTENT);
     } catch (BaseException e) {
       return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -122,8 +123,8 @@ public class UserController {
         service.upload(file);
       }
 
-      JSONObject json = new JSONObject();
-      json.put("status", "success");
+      JsonObject json = new JsonObject();
+      json.addProperty("status", "success");
       return ResultUtil.success(json, HttpStatus.CREATED);
     } catch (BaseException | IOException | InvalidFormatException e) {
       return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -141,8 +142,8 @@ public class UserController {
     LOGGER.info("[UserController] id:{},{}", id, path);
     try {
       service.downLoad(id, path);
-      JSONObject json = new JSONObject();
-      json.put("status", "success");
+      JsonObject json = new JsonObject();
+      json.addProperty("status", "success");
       return ResultUtil.success(json, HttpStatus.NO_CONTENT);
     } catch (BaseException e) {
       return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -3,8 +3,8 @@ package com.chendehe.util;
 import com.chendehe.exception.ValidationException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 public final class DataCheck {
 

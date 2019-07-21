@@ -11,128 +11,213 @@
   <artifactId>mini-web</artifactId>
   <version>1.0.0</version>
 
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+
   <dependencies>
 
-    <!-- web starter -->
+    <!--Springboot-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-amqp</artifactId>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-batch</artifactId>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-data-mongodb</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-data-neo4j</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-data-redis</artifactId>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-quartz</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-    <!-- mybatis-spring -->
     <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis-spring</artifactId>
+      <groupId>de.codecentric</groupId>
+      <artifactId>spring-boot-admin-starter-client</artifactId>
     </dependency>
+    <dependency>
+      <groupId>de.codecentric</groupId>
+      <artifactId>spring-boot-admin-starter-server</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+      <version>2.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.batch</groupId>
+      <artifactId>spring-batch-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!--Springboot-->
+
+
+<!--    &lt;!&ndash; web starter &ndash;&gt;-->
+<!--    &lt;!&ndash; mybatis-spring &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.mybatis</groupId>-->
+<!--      <artifactId>mybatis-spring</artifactId>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-websocket</artifactId>
     </dependency>
-    <!--mybatis-->
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-    </dependency>
-    <!-- spring-jdbc -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-    </dependency>
-    <!-- jdbc connector -->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-    </dependency>
+<!--    &lt;!&ndash;mybatis&ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.mybatis</groupId>-->
+<!--      <artifactId>mybatis</artifactId>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; spring-jdbc &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework</groupId>-->
+<!--      <artifactId>spring-jdbc</artifactId>-->
+<!--    </dependency>-->
     <!-- ali数据库连接池 -->
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>druid</artifactId>
+      <version>1.1.6</version>
     </dependency>
-    <!-- guava工具类 -->
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-    </dependency>
-    <!-- commons-lang3工具类 -->
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-    </dependency>
-    <!-- commons-collections4工具类 -->
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-collections4</artifactId>
-    </dependency>
-    <!-- json工具包 -->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>fastjson</artifactId>
-    </dependency>
-    <!-- 使用@ConfigurationProperties读取配置 -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <!-- jedis -->
-    <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-    </dependency>
-    <!-- codis -->
-    <dependency>
-      <groupId>io.codis.jodis</groupId>
-      <artifactId>jodis</artifactId>
-    </dependency>
+<!--    &lt;!&ndash; guava工具类 &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>com.google.guava</groupId>-->
+<!--      <artifactId>guava</artifactId>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; commons-lang3工具类 &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.commons</groupId>-->
+<!--      <artifactId>commons-lang3</artifactId>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; commons-collections4工具类 &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.commons</groupId>-->
+<!--      <artifactId>commons-collections4</artifactId>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; json工具包 &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>com.alibaba</groupId>-->
+<!--      <artifactId>fastjson</artifactId>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; 使用@ConfigurationProperties读取配置 &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-configuration-processor</artifactId>-->
+<!--      <optional>true</optional>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; jedis &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>redis.clients</groupId>-->
+<!--      <artifactId>jedis</artifactId>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; codis &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>io.codis.jodis</groupId>-->
+<!--      <artifactId>jodis</artifactId>-->
+<!--    </dependency>-->
     <!-- 处理Excel -->
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
+        <version>3.9</version>
     </dependency>
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
+        <version>3.9</version>
     </dependency>
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml-schemas</artifactId>
+        <version>3.9</version>
     </dependency>
-    <!-- elasticsearch -->
-    <dependency>
-      <groupId>org.elasticsearch</groupId>
-      <artifactId>elasticsearch</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.elasticsearch.client</groupId>
-      <artifactId>transport</artifactId>
-    </dependency>
-    <!-- netty -->
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-all</artifactId>
-    </dependency>
+<!--    &lt;!&ndash; elasticsearch &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.elasticsearch</groupId>-->
+<!--      <artifactId>elasticsearch</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.elasticsearch.client</groupId>-->
+<!--      <artifactId>transport</artifactId>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; netty &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>io.netty</groupId>-->
+<!--      <artifactId>netty-all</artifactId>-->
+<!--    </dependency>-->
     <!-- zookeeper -->
     <dependency>
       <groupId>org.apache.zookeeper</groupId>
       <artifactId>zookeeper</artifactId>
+      <version>3.5.5</version>
     </dependency>
     <!-- zkclient -->
     <dependency>
       <groupId>com.101tec</groupId>
       <artifactId>zkclient</artifactId>
+      <version>0.9</version>
     </dependency>
-    <!-- kafka_2.12 -->
-    <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka_2.12</artifactId>
-    </dependency>
+<!--    &lt;!&ndash; kafka_2.12 &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.kafka</groupId>-->
+<!--      <artifactId>kafka_2.12</artifactId>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>com.github.rholder</groupId>
       <artifactId>guava-retrying</artifactId>
-    </dependency>
-    <!-- test -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
+      <version>2.0.0</version>
     </dependency>
 
     <dependency>
@@ -140,36 +225,37 @@
       <artifactId>jetcd-core</artifactId>
       <version>0.0.2</version>
     </dependency>
-    <dependency>
-      <groupId>io.grpc</groupId>
-      <artifactId>grpc-core</artifactId>
-      <version>1.10.0</version>
-    </dependency>
-    <dependency>
-      <groupId>io.grpc</groupId>
-      <artifactId>grpc-netty</artifactId>
-      <version>1.10.0</version>
-    </dependency>
-    <dependency>
-      <groupId>io.grpc</groupId>
-      <artifactId>grpc-protobuf</artifactId>
-      <version>1.10.0</version>
-    </dependency>
-    <dependency>
-      <groupId>io.grpc</groupId>
-      <artifactId>grpc-stub</artifactId>
-      <version>1.10.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>1.7.2</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>io.grpc</groupId>-->
+<!--      <artifactId>grpc-core</artifactId>-->
+<!--      <version>1.10.0</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>io.grpc</groupId>-->
+<!--      <artifactId>grpc-netty</artifactId>-->
+<!--      <version>1.10.0</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>io.grpc</groupId>-->
+<!--      <artifactId>grpc-protobuf</artifactId>-->
+<!--      <version>1.10.0</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>io.grpc</groupId>-->
+<!--      <artifactId>grpc-stub</artifactId>-->
+<!--      <version>1.10.0</version>-->
+<!--    </dependency>-->
+    <!-- slf4j -->
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>-->
+<!--      <artifactId>slf4j-api</artifactId>-->
+<!--      <version>1.7.26</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>-->
+<!--      <artifactId>slf4j-simple</artifactId>-->
+<!--      <version>1.7.26</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>org.jfree</groupId>

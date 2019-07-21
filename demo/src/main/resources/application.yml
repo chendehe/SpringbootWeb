@@ -1,20 +1,23 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
     username: root
-    password: Chendehe1!
+    password:
     # 配置druid数据源，否则MybatisConfig找不到DataSource
     type: com.alibaba.druid.pool.DruidDataSource
-
-jedis:
-  host: 192.168.111.128
-  port: 6379
 
 server:
   port: 1111
 logging:
-  level: info
-
+  level:
+    root: warn
+    com:
+      chendehe: info
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: info
 
 

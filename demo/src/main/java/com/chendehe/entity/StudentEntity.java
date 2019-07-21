@@ -2,7 +2,7 @@ package com.chendehe.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.core.style.ToStringCreator;
 
 public class StudentEntity implements BaseEntity, Serializable {
 
@@ -74,6 +74,6 @@ public class StudentEntity implements BaseEntity, Serializable {
 
   @Override
   public String toString() {
-    return ToStringBuilder.reflectionToString(this);
+    return new ToStringCreator(this).toString();
   }
 }

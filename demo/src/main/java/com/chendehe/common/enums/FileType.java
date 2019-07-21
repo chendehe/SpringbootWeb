@@ -2,8 +2,6 @@ package com.chendehe.common.enums;
 
 import com.google.common.collect.ImmutableMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * 性别 1-男，2-女.

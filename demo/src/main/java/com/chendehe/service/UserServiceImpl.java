@@ -16,10 +16,12 @@ import com.chendehe.util.IdGenerator;
 import com.chendehe.vo.Page;
 import com.chendehe.vo.PageResult;
 import com.chendehe.vo.UserVo;
+import com.google.common.collect.Lists;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
@@ -31,11 +33,9 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +43,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -64,7 +65,7 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
 
     PageResult<UserVo> result = new PageResult<>();
     List<UserEntity> userList = userDao.findAll();
-    List<UserVo> userVoList = Lists.newArrayList();
+    List<UserVo> userVoList = new ArrayList<>();
 
     for (UserEntity user : userList) {
       userVoList.add(convertEntityToVo(user));
@@ -320,6 +321,6 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
-    System.out.println("...ApplicationArguments...");
+    LOGGER.info("...ApplicationArguments...");
   }
 }

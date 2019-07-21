@@ -1,6 +1,6 @@
 package com.chendehe.vo;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.core.style.ToStringCreator;
 
 public class Page {
 
@@ -28,6 +28,6 @@ public class Page {
 
   @Override
   public String toString() {
-    return ToStringBuilder.reflectionToString(this);
+    return new ToStringCreator(this).toString();
   }
 }
