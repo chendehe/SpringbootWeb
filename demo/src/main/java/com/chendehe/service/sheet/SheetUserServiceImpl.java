@@ -4,8 +4,7 @@ import com.chendehe.common.MyConstant;
 import com.chendehe.dao.UserDao;
 import com.chendehe.entity.UserEntity;
 import com.chendehe.util.IdGenerator;
-import com.chendehe.util.TimeFormat;
-import com.google.common.collect.Lists;
+import com.chendehe.util.TimeUtils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -89,7 +88,7 @@ public class SheetUserServiceImpl implements SheetService {
       row.createCell(0).setCellValue(users.get(i).getName());
       row.createCell(1).setCellValue(users.get(i).getGender());
       row.createCell(2).setCellValue(
-          TimeFormat.getDate(users.get(i).getBirthday(), TimeFormat.DEFAULT_TYPE));
+          TimeUtils.getDate(users.get(i).getBirthday(), TimeUtils.DEFAULT_TYPE));
       row.createCell(3).setCellValue(users.get(i).getAddress());
     }
     return sh.getWorkbook();
