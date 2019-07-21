@@ -2,6 +2,7 @@ package com.chendehe.dao;
 
 import com.chendehe.entity.UserEntity;
 import java.util.List;
+import java.util.Optional;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -15,7 +16,7 @@ public interface UserDao extends BaseDao {
   List<UserEntity> findAll();
 
   @Select("select * from t_user where id = #{id}")
-  UserEntity findOne(String id);
+  Optional<UserEntity> findOne(String id);
 
   @Insert("insert into t_user(id, name, gender, birthday, address, create_time, update_time) " +
       "values(#{id}, #{name}, #{gender}, #{birthday}, #{address}, #{createTime}, #{updateTime})")

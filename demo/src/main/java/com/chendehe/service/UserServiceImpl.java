@@ -80,7 +80,8 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
   @Override
   public UserVo findOne(String id) {
     DataCheck.checkTrimStrEmpty(id, ErrorCode.PARAM_EMPTY, "id");
-    return convertEntityToVo(userDao.findOne(id));
+    return convertEntityToVo(userDao.findOne(id)
+        .orElseThrow(() -> new ValidationException("object.not.exist", id)));
   }
 
   @Transactional
