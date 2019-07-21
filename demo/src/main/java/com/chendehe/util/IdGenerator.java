@@ -1,8 +1,6 @@
 package com.chendehe.util;
 
-import java.util.Date;
 import java.util.UUID;
-import org.apache.commons.lang3.RandomUtils;
 
 public final class IdGenerator {
 

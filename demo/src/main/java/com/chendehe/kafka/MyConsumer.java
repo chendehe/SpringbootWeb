@@ -1,7 +1,9 @@
 package com.chendehe.kafka;
 
+import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -33,7 +35,7 @@ public class MyConsumer {
 
     ConsumerRecords<String, String> records;
     for (; ; ) {
-      records = consumer.poll(100);
+      records = consumer.poll(Duration.ofSeconds(3));
       System.out.println("SIZE" + records.count());
       if (!records.isEmpty()) {
         break;

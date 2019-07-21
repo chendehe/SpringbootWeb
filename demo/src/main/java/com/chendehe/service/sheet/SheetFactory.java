@@ -5,9 +5,9 @@ import com.chendehe.entity.StudentEntity;
 import com.chendehe.entity.UserEntity;
 import com.chendehe.util.SpringContextUtils;
 import java.util.List;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.util.CollectionUtils;
 
 public class SheetFactory {
 
@@ -62,7 +62,7 @@ public class SheetFactory {
    * @return Workbook
    */
   public Workbook parseToSheet(List<?> list, Workbook wb) {
-    if (CollectionUtils.isNotEmpty(list)) {
+    if (!CollectionUtils.isEmpty(list)) {
       if (list.get(0) instanceof UserEntity) {
         return SH_USER_SERVICE.parseToSheet(list, wb);
       } else if (list.get(0) instanceof StudentEntity) {

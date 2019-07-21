@@ -1,7 +1,7 @@
 package com.chendehe.vo;
 
 import java.util.List;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.core.style.ToStringCreator;
 
 public class PageResult<T> extends Page {
 
@@ -28,6 +28,6 @@ public class PageResult<T> extends Page {
 
   @Override
   public String toString() {
-    return ToStringBuilder.reflectionToString(this);
+    return new ToStringCreator(this).toString();
   }
 }

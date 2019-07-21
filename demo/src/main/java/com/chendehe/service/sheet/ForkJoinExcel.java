@@ -4,9 +4,9 @@ import com.chendehe.entity.StudentEntity;
 import com.chendehe.entity.UserEntity;
 import java.util.List;
 import java.util.concurrent.RecursiveTask;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.util.CollectionUtils;
 
 public class ForkJoinExcel extends RecursiveTask<Workbook> {
 
@@ -37,7 +37,7 @@ public class ForkJoinExcel extends RecursiveTask<Workbook> {
   @Override
   protected Workbook compute() {
 
-    if (CollectionUtils.isNotEmpty(users) && CollectionUtils.isNotEmpty(students)) {
+    if (!CollectionUtils.isEmpty(users) && !CollectionUtils.isEmpty(students)) {
 
       //分裂
       ForkJoinExcel userExcel = new ForkJoinExcel(users, wb);
@@ -50,9 +50,9 @@ public class ForkJoinExcel extends RecursiveTask<Workbook> {
       stuExcel.join();
 
       return wb;
-    } else if (CollectionUtils.isNotEmpty(users)) {
+    } else if (!CollectionUtils.isEmpty(users)) {
       return new SheetFactory().parseToSheet(users, wb);
-    } else if (CollectionUtils.isNotEmpty(students)) {
+    } else if (!CollectionUtils.isEmpty(students)) {
       return new SheetFactory().parseToSheet(students, wb);
     } else {
       return new SheetFactory().parseToSheet(list, wb);

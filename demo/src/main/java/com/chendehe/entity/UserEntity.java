@@ -3,7 +3,7 @@ package com.chendehe.entity;
 import com.google.common.base.Objects;
 import java.io.Serializable;
 import java.util.Date;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.core.style.ToStringCreator;
 
 public class UserEntity implements BaseEntity, Serializable {
 
@@ -77,7 +77,7 @@ public class UserEntity implements BaseEntity, Serializable {
   @Override
   public String toString() {
     // java-Objects.toString(),guava-MoreObjects.toStringHelper()
-    return ToStringBuilder.reflectionToString(this);
+    return new ToStringCreator(this).toString();
   }
 
   public boolean equals(Object o) {

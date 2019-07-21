@@ -4,6 +4,8 @@ import com.chendehe.common.MyConstant;
 import com.chendehe.dao.StudentDao;
 import com.chendehe.entity.StudentEntity;
 import com.chendehe.util.IdGenerator;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -12,7 +14,6 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class SheetStudentServiceImpl implements SheetService {
 
   @Override
   public void doParseSheet(Sheet sh) {
-    List<StudentEntity> students = Lists.newArrayList();
+    List<StudentEntity> students = new ArrayList<>();
     StudentEntity student;
 
     boolean firstIn = true;
