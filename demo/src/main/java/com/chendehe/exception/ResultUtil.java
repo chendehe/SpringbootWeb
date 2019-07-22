@@ -18,6 +18,15 @@ public final class ResultUtil {
   /**
    * 成功返回.
    *
+   * @param status http状态
+   */
+  public static ResponseEntity success(HttpStatus status) {
+    return new ResponseEntity<>(status);
+  }
+
+  /**
+   * 成功返回.
+   *
    * @param t      返回的报文
    * @param status http状态
    * @param <T>    泛型类型
