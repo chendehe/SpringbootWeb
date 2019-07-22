@@ -21,8 +21,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
@@ -113,7 +113,7 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
     return vo;
   }
 
-//  @Transactional
+  //  @Transactional
   @Override
   public void delete(String id) {
 //    DataCheck.checkTrimStrEmpty(id, ErrorCode.PARAM_EMPTY, "id");
@@ -229,7 +229,7 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
 
     convertVoToEntity(vo, user);
 
-    user.setCreateTime(new Date());
+    user.setCreateTime(LocalDateTime.now());
     return user;
   }
 
@@ -244,7 +244,7 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
 
     convertVoToEntity(vo, user);
 
-    user.setUpdateTime(new Date());
+    user.setUpdateTime(LocalDateTime.now());
     return user;
   }
 

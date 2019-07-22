@@ -1,11 +1,13 @@
 package com.chendehe.entity;
 
-import com.google.common.base.Objects;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import org.springframework.core.style.ToStringCreator;
+import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class UserEntity implements BaseEntity, Serializable {
 
   private static final long serialVersionUID = -2535178899662614143L;
@@ -14,82 +16,7 @@ public class UserEntity implements BaseEntity, Serializable {
   private int gender;
   private LocalDate birthday;
   private String address;
-  private Date createTime;
-  private Date updateTime;
-
-  public Date getUpdateTime() {
-    return updateTime;
-  }
-
-  public void setUpdateTime(Date updateTime) {
-    this.updateTime = updateTime;
-  }
-
-  public Date getCreateTime() {
-
-    return createTime;
-  }
-
-  public void setCreateTime(Date createTime) {
-    this.createTime = createTime;
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public int getGender() {
-    return gender;
-  }
-
-  public void setGender(int gender) {
-    this.gender = gender;
-  }
-
-  public LocalDate getBirthday() {
-    return birthday;
-  }
-
-  public void setBirthday(LocalDate birthday) {
-    this.birthday = birthday;
-  }
-
-  public String getAddress() {
-    return address;
-  }
-
-  public void setAddress(String address) {
-    this.address = address;
-  }
-
-
-  @Override
-  public String toString() {
-    // java-Objects.toString(),guava-MoreObjects.toStringHelper()
-    return new ToStringCreator(this).toString();
-  }
-
-  public boolean equals(Object o) {
-    // Apache Commons Lang3-EqualsBuilder
-    return null != o && o instanceof UserEntity && Objects.equal(this, o);
-  }
-
-  @Override
-  public int hashCode() {
-    // Apache Commons Lang3-HashCodeBuilder
-    return Objects.hashCode(this);
-  }
+  private LocalDateTime createTime;
+  private LocalDateTime updateTime;
 
 }

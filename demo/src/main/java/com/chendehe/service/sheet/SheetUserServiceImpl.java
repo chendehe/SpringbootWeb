@@ -5,6 +5,7 @@ import com.chendehe.dao.UserDao;
 import com.chendehe.entity.UserEntity;
 import com.chendehe.util.IdGenerator;
 import com.chendehe.util.TimeUtils;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,7 +51,7 @@ public class SheetUserServiceImpl implements SheetService {
       user.setGender((int) row.getCell(1).getNumericCellValue());
       user.setBirthday(row.getCell(2).getDateCellValue().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
       user.setAddress(row.getCell(3).getStringCellValue());
-      user.setCreateTime(new Date());
+      user.setCreateTime(LocalDateTime.now());
       users.add(user);
     }
     LOGGER.info("[UserServiceImpl] save user in db... :{}", users.size());
