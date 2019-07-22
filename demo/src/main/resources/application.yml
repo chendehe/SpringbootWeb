@@ -18,6 +18,20 @@ spring:
     pool-prepared-statements: true
     max-open-prepared-statements: 20
     async-init: true
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+#    cluster:
+#      enable: true
+#      nodes:
+#        - 127.0.0.1:7379
+#        - 127.0.0.1:7380
+#    sentinel:
+#      master: master
+#      nodes:
+#        - 127.0.0.1:7380
+#    redisson:
+#      config: classpath:redisson.yml
 
 server:
   port: 1111

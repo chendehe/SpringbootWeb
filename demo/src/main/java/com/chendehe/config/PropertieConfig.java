@@ -1,6 +1,9 @@
 package com.chendehe.config;
 
 import com.chendehe.util.PropertieUtil;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -10,8 +13,10 @@ import org.springframework.stereotype.Component;
  *
  * @see PropertieUtil
  */
-@Component
-@ConfigurationProperties(prefix = "aaa")
+@Getter
+@Setter
+@ToString
+@Component@ConfigurationProperties(prefix = "aaa")
 @PropertySource("classpath:config/template.properties")
 public class PropertieConfig {
 
@@ -19,19 +24,4 @@ public class PropertieConfig {
 
   private String test2;
 
-  public String getTest1() {
-    return test1;
-  }
-
-  public void setTest1(String test1) {
-    this.test1 = test1;
-  }
-
-  public String getTest2() {
-    return test2;
-  }
-
-  public void setTest2(String test2) {
-    this.test2 = test2;
-  }
 }
