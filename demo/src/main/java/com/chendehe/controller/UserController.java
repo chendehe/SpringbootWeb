@@ -73,7 +73,11 @@ public class UserController {
   @PostMapping("/")
   ResponseEntity save(@RequestBody UserVo userVo) {
     LOGGER.info("[UserController] user is:{}", new Gson().toJson(userVo));
+    try {
       return ResultUtil.success(service.save(userVo), HttpStatus.CREATED);
+    } catch (Exception e) {
+      return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
   /**
