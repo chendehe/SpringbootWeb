@@ -1,11 +1,10 @@
 package com.chendehe.controller;
 
-import com.chendehe.websocket.ServerMessage;
-import com.chendehe.exception.BaseException;
 import com.chendehe.exception.ResultUtil;
 import com.chendehe.service.UserService;
 import com.chendehe.vo.Page;
 import com.chendehe.vo.UserVo;
+import com.chendehe.websocket.ServerMessage;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.IOException;
@@ -47,11 +46,7 @@ public class UserController {
   @GetMapping("/list")
   ResponseEntity findAll(Page page) {
     LOGGER.info("[UserController] id is:{}", page);
-    try {
-      return ResultUtil.success(service.findAll(page), HttpStatus.OK);
-    } catch (BaseException e) {
-      return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    return ResultUtil.success(service.findAll(page), HttpStatus.OK);
   }
 
   /**
@@ -60,11 +55,7 @@ public class UserController {
   @GetMapping("/{id}")
   ResponseEntity findOne(@PathVariable String id) {
     LOGGER.info("[UserController] id is:{}", id);
-    try {
-      return ResultUtil.success(service.findOne(id), HttpStatus.OK);
-    } catch (BaseException e) {
-      return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    return ResultUtil.success(service.findOne(id), HttpStatus.OK);
   }
 
   /**
@@ -73,11 +64,7 @@ public class UserController {
   @PostMapping("/")
   ResponseEntity save(@RequestBody UserVo userVo) {
     LOGGER.info("[UserController] user is:{}", new Gson().toJson(userVo));
-    try {
-      return ResultUtil.success(service.save(userVo), HttpStatus.CREATED);
-    } catch (Exception e) {
-      return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    return ResultUtil.success(service.save(userVo), HttpStatus.CREATED);
   }
 
   /**
@@ -87,11 +74,7 @@ public class UserController {
   ResponseEntity update(@RequestBody UserVo userVo, @PathVariable String id) {
     LOGGER.info("[UserController] user is:{}, id is:{}", new Gson().toJson(userVo), id);
     userVo.setId(id);
-    try {
-      return ResultUtil.success(service.update(userVo), HttpStatus.CREATED);
-    } catch (Exception e) {
-      return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    return ResultUtil.success(service.update(userVo), HttpStatus.CREATED);
   }
 
   /**
@@ -100,14 +83,8 @@ public class UserController {
   @DeleteMapping("/{id}")
   ResponseEntity delete(@PathVariable String id) {
     LOGGER.info("[UserController] id is:{}", id);
-    try {
-      service.delete(id);
-      JsonObject json = new JsonObject();
-      json.addProperty("status", "success");
-      return ResultUtil.success(json.toString(), HttpStatus.NO_CONTENT);
-    } catch (BaseException e) {
-      return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    service.delete(id);
+    return ResultUtil.success(HttpStatus.NO_CONTENT);
   }
 
 
@@ -116,38 +93,36 @@ public class UserController {
    */
   @PostMapping("/upLoad")
   ResponseEntity upLoad(@RequestParam("file") MultipartFile file) {
-    try {
-      LOGGER.info("[UserController] file path:{}", file.isEmpty());
+    LOGGER.info("[UserController] file path:{}", file.isEmpty());
 
-      if (!file.isEmpty()) {
+    if (!file.isEmpty()) {
+      try {
         service.upload(file);
+      } catch (IOException | InvalidFormatException e) {
+        return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
       }
-
-      JsonObject json = new JsonObject();
-      json.addProperty("status", "success");
-      return ResultUtil.success(json.toString(), HttpStatus.CREATED);
-    } catch (BaseException | IOException | InvalidFormatException e) {
-      return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    JsonObject json = new JsonObject();
+    json.addProperty("status", "success");
+    return ResultUtil.success(json.toString(), HttpStatus.CREATED);
+
   }
 
   /**
    * Excel下载. 成功返回200.
-   * @param id id
+   *
+   * @param id   id
    * @param path 下载文件本地存放路径
    * @return 状态
    */
   @GetMapping("/downLoad")
   public ResponseEntity downLoad(@RequestParam String id, @RequestParam String path) {
     LOGGER.info("[UserController] id:{},{}", id, path);
-    try {
-      service.downLoad(id, path);
-      JsonObject json = new JsonObject();
-      json.addProperty("status", "success");
-      return ResultUtil.success(json.toString(), HttpStatus.NO_CONTENT);
-    } catch (BaseException e) {
-      return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    service.downLoad(id, path);
+    JsonObject json = new JsonObject();
+    json.addProperty("status", "success");
+    return ResultUtil.success(json.toString(), HttpStatus.NO_CONTENT);
   }
 
   //客户端只要订阅了/topic/subscribeTest主题，调用这个方法即可
