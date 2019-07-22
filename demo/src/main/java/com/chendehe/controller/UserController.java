@@ -73,11 +73,7 @@ public class UserController {
   @PostMapping("/")
   ResponseEntity save(@RequestBody UserVo userVo) {
     LOGGER.info("[UserController] user is:{}", new Gson().toJson(userVo));
-    try {
       return ResultUtil.success(service.save(userVo), HttpStatus.CREATED);
-    } catch (Exception e) {
-      return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
   }
 
   /**
@@ -104,7 +100,7 @@ public class UserController {
       service.delete(id);
       JsonObject json = new JsonObject();
       json.addProperty("status", "success");
-      return ResultUtil.success(json, HttpStatus.NO_CONTENT);
+      return ResultUtil.success(json.toString(), HttpStatus.NO_CONTENT);
     } catch (BaseException e) {
       return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -125,7 +121,7 @@ public class UserController {
 
       JsonObject json = new JsonObject();
       json.addProperty("status", "success");
-      return ResultUtil.success(json, HttpStatus.CREATED);
+      return ResultUtil.success(json.toString(), HttpStatus.CREATED);
     } catch (BaseException | IOException | InvalidFormatException e) {
       return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -144,7 +140,7 @@ public class UserController {
       service.downLoad(id, path);
       JsonObject json = new JsonObject();
       json.addProperty("status", "success");
-      return ResultUtil.success(json, HttpStatus.NO_CONTENT);
+      return ResultUtil.success(json.toString(), HttpStatus.NO_CONTENT);
     } catch (BaseException e) {
       return ResultUtil.exception(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }

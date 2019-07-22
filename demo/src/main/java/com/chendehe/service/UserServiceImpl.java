@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
   public PageResult<UserVo> findAll(Page page) {
 
     PageResult<UserVo> result = new PageResult<>();
-    List<UserEntity> userList = userDao.findAll();
+    List<UserEntity> userList = userDao.findAll(page);
     List<UserVo> userVoList = new ArrayList<>();
 
     for (UserEntity user : userList) {
@@ -113,10 +113,10 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
     return vo;
   }
 
-  @Transactional
+//  @Transactional
   @Override
   public void delete(String id) {
-    DataCheck.checkTrimStrEmpty(id, ErrorCode.PARAM_EMPTY, "id");
+//    DataCheck.checkTrimStrEmpty(id, ErrorCode.PARAM_EMPTY, "id");
     userDao.delete(id);
   }
 
@@ -154,7 +154,7 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
       }
 
     } catch (IOException | InvalidFormatException | InterruptedException | ExecutionException e) {
-      LOGGER.error("[UserServiceImpl] {}", e);
+      LOGGER.error("[UserServiceImpl] ", e);
       throw new ValidationException(ErrorCode.EXCEL_PARSE_ERROR);
     } finally {
       //reset栅栏
@@ -177,7 +177,7 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
 
     Future<Workbook> result = new ForkJoinPool().submit(
         new ForkJoinExcel(
-            userDao.findAll(), studentDao.findAll()
+            userDao.findAll(new Page()), studentDao.findAll()
         ));
 
     // 第六步，将文件存到指定位置
@@ -187,14 +187,14 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
         return;
       }
     } catch (InterruptedException | ExecutionException e) {
-      LOGGER.error("[UserServiceImpl] {}", e);
+      LOGGER.error("[UserServiceImpl] ", e);
       throw new ValidationException(ErrorCode.EXCEL_DOWNLOAD_FAILED);
     }
 
     try (OutputStream os = new FileOutputStream(path)) {
       wb.write(os);
     } catch (IOException e) {
-      LOGGER.error("[UserServiceImpl] {}", e);
+      LOGGER.error("[UserServiceImpl] ", e);
       throw new ValidationException(ErrorCode.EXCEL_DOWNLOAD_FAILED);
     }
 
@@ -302,10 +302,10 @@ public class UserServiceImpl implements UserService, ApplicationRunner {
       LOGGER.info("[UserServiceImpl] waiting... {}", barrier.getNumberWaiting());
       barrier.await(MyConstant.BARRIER_TIMEOUT, TimeUnit.SECONDS);
     } catch (InterruptedException | BrokenBarrierException e) {
-      LOGGER.error("[UserServiceImpl] {}", e);
+      LOGGER.error("[UserServiceImpl] ", e);
       throw new ValidationException(ErrorCode.BARRIER_ERROR);
     } catch (TimeoutException e) {
-      LOGGER.error("[UserServiceImpl] {}", e);
+      LOGGER.error("[UserServiceImpl] ", e);
       throw new ValidationException(ErrorCode.BARRIER_TIMEOUT);
     }
   }

@@ -2,6 +2,7 @@ package com.chendehe.entity;
 
 import com.google.common.base.Objects;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import org.springframework.core.style.ToStringCreator;
 
@@ -11,7 +12,7 @@ public class UserEntity implements BaseEntity, Serializable {
   private String id;
   private String name;
   private int gender;
-  private Date birthday;
+  private LocalDate birthday;
   private String address;
   private Date createTime;
   private Date updateTime;
@@ -57,11 +58,11 @@ public class UserEntity implements BaseEntity, Serializable {
     this.gender = gender;
   }
 
-  public Date getBirthday() {
+  public LocalDate getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(Date birthday) {
+  public void setBirthday(LocalDate birthday) {
     this.birthday = birthday;
   }
 

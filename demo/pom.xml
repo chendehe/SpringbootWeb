@@ -108,11 +108,11 @@
         </dependency>
         <!--Springboot-->
 
-        <!-- ali数据库连接池 -->
+        <!-- ali数据库连接池,18解决MyBatis3.5的SQLFeatureNotSupportedException -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.1.6</version>
+            <version>1.1.18</version>
         </dependency>
 
         <!--    &lt;!&ndash; 使用@ConfigurationProperties读取配置 &ndash;&gt;-->

@@ -5,6 +5,7 @@ import com.chendehe.dao.UserDao;
 import com.chendehe.entity.UserEntity;
 import com.chendehe.util.IdGenerator;
 import com.chendehe.util.TimeUtils;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -47,7 +48,7 @@ public class SheetUserServiceImpl implements SheetService {
       user.setId(IdGenerator.get());
       user.setName(row.getCell(0).getStringCellValue());
       user.setGender((int) row.getCell(1).getNumericCellValue());
-      user.setBirthday(row.getCell(2).getDateCellValue());
+      user.setBirthday(row.getCell(2).getDateCellValue().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
       user.setAddress(row.getCell(3).getStringCellValue());
       user.setCreateTime(new Date());
       users.add(user);
@@ -87,8 +88,7 @@ public class SheetUserServiceImpl implements SheetService {
       // 第四步，创建单元格，并设置值
       row.createCell(0).setCellValue(users.get(i).getName());
       row.createCell(1).setCellValue(users.get(i).getGender());
-      row.createCell(2).setCellValue(
-          TimeUtils.getDate(users.get(i).getBirthday(), TimeUtils.DEFAULT_TYPE));
+      row.createCell(2).setCellValue(Date.from(users.get(i).getBirthday().atStartOfDay(ZoneId.systemDefault()).toInstant()));
       row.createCell(3).setCellValue(users.get(i).getAddress());
     }
     return sh.getWorkbook();

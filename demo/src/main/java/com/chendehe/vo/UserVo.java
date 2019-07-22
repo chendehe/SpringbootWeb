@@ -1,6 +1,7 @@
 package com.chendehe.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
 import java.util.Date;
 import org.springframework.core.style.ToStringCreator;
 
@@ -10,7 +11,7 @@ public class UserVo {
   private String name;
   @JsonProperty("sex")
   private Integer gender;
-  private Date birthday;
+  private LocalDate birthday;
   private String address;
 
   public String getId() {
@@ -37,11 +38,11 @@ public class UserVo {
     this.gender = gender;
   }
 
-  public Date getBirthday() {
+  public LocalDate getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(Date birthday) {
+  public void setBirthday(LocalDate birthday) {
     this.birthday = birthday;
   }
 

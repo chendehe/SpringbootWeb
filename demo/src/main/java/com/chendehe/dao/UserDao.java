@@ -1,6 +1,7 @@
 package com.chendehe.dao;
 
 import com.chendehe.entity.UserEntity;
+import com.chendehe.vo.Page;
 import java.util.List;
 import java.util.Optional;
 import org.apache.ibatis.annotations.Delete;
@@ -12,8 +13,8 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface UserDao extends BaseDao {
 
-  @Select("select * from t_user")
-  List<UserEntity> findAll();
+  @Select("select * from t_user limit 0, 10")
+  List<UserEntity> findAll(Page page);
 
   @Select("select * from t_user where id = #{id}")
   Optional<UserEntity> findOne(String id);
