@@ -2,6 +2,7 @@ package com.chendehe.controller;
 
 import com.chendehe.exception.ResultUtil;
 import com.chendehe.service.impl.UserService;
+import com.chendehe.service.remote.RestService;
 import com.chendehe.vo.Page;
 import com.chendehe.vo.UserVo;
 import com.chendehe.websocket.ServerMessage;
@@ -33,6 +34,9 @@ public class UserController {
   private UserService service;
 
   @Autowired
+  private RestService restService;
+
+  @Autowired
   private SimpMessagingTemplate messagingTemplate;
 
   @Autowired
@@ -55,6 +59,7 @@ public class UserController {
   @GetMapping("/{id}")
   ResponseEntity findOne(@PathVariable String id) {
     LOGGER.info("[UserController] id is:{}", id);
+//    return ResultUtil.success(restService.findOne(id), HttpStatus.OK);
     return ResultUtil.success(service.findOne(id), HttpStatus.OK);
   }
 
@@ -64,6 +69,7 @@ public class UserController {
   @PostMapping("/")
   ResponseEntity save(@RequestBody UserVo userVo) {
     LOGGER.info("[UserController] user is:{}", new Gson().toJson(userVo));
+//    return ResultUtil.success(restService.save(userVo), HttpStatus.CREATED);
     return ResultUtil.success(service.save(userVo), HttpStatus.CREATED);
   }
 
@@ -74,6 +80,7 @@ public class UserController {
   ResponseEntity update(@RequestBody UserVo userVo, @PathVariable String id) {
     LOGGER.info("[UserController] user is:{}, id is:{}", new Gson().toJson(userVo), id);
     userVo.setId(id);
+//    return ResultUtil.success(restService.update(userVo), HttpStatus.CREATED);
     return ResultUtil.success(service.update(userVo), HttpStatus.CREATED);
   }
 
@@ -83,6 +90,7 @@ public class UserController {
   @DeleteMapping("/{id}")
   ResponseEntity delete(@PathVariable String id) {
     LOGGER.info("[UserController] id is:{}", id);
+//    restService.delete(id);
     service.delete(id);
     return ResultUtil.success(HttpStatus.NO_CONTENT);
   }

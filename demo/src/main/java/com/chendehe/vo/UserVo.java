@@ -2,9 +2,13 @@ package com.chendehe.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDate;
-import java.util.Date;
-import org.springframework.core.style.ToStringCreator;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 public class UserVo {
 
   private String id;
@@ -14,48 +18,4 @@ public class UserVo {
   private LocalDate birthday;
   private String address;
 
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Integer getGender() {
-    return gender;
-  }
-
-  public void setGender(Integer gender) {
-    this.gender = gender;
-  }
-
-  public LocalDate getBirthday() {
-    return birthday;
-  }
-
-  public void setBirthday(LocalDate birthday) {
-    this.birthday = birthday;
-  }
-
-  public String getAddress() {
-    return address;
-  }
-
-  public void setAddress(String address) {
-    this.address = address;
-  }
-
-  @Override
-  public String toString() {
-    return new ToStringCreator(this).toString();
-  }
 }
