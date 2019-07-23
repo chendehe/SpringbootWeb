@@ -1,22 +1,22 @@
 package com.chendehe.config;
 
-import java.util.Locale;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @Configuration
-public class LocaleConfig extends WebMvcConfigurerAdapter {
+public class LocaleConfig implements WebMvcConfigurer {
 
   @Bean
   public LocaleResolver localeResolver() {
     SessionLocaleResolver slr = new SessionLocaleResolver();
     // 默认语言
-    slr.setDefaultLocale(Locale.US);
+    slr.setDefaultLocale(LocaleContextHolder.getLocale());
     return slr;
   }
 
