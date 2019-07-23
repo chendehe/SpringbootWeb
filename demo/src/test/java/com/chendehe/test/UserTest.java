@@ -3,7 +3,7 @@ package com.chendehe.test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
-import com.chendehe.service.UserService;
+import com.chendehe.service.impl.UserService;
 import com.chendehe.vo.Page;
 import com.chendehe.vo.PageResult;
 import com.chendehe.vo.UserVo;

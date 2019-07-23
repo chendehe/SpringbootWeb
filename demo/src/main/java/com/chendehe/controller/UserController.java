@@ -1,7 +1,7 @@
 package com.chendehe.controller;
 
 import com.chendehe.exception.ResultUtil;
-import com.chendehe.service.UserService;
+import com.chendehe.service.impl.UserService;
 import com.chendehe.vo.Page;
 import com.chendehe.vo.UserVo;
 import com.chendehe.websocket.ServerMessage;

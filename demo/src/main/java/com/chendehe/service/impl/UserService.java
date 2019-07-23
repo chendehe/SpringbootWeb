@@ -1,4 +1,4 @@
-package com.chendehe.service;
+package com.chendehe.service.impl;
 
 import com.chendehe.vo.Page;
 import com.chendehe.vo.PageResult;
