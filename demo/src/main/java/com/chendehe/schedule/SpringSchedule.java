@@ -17,7 +17,7 @@ public class SpringSchedule {
    * <p>异步的注解@Async，可以指定入参，可以返回Future，也可以指定Executor，</p>
    * <p>不能和类似@PostConstruct对生命周期回调的方法一起使用，需要分两个类来写。</p>
    */
-  @Scheduled(fixedDelay = 2000)
+//  @Scheduled(fixedDelay = 2000)
   public void doSomethingSync() {
     System.out.println("doSomething...");
   }
