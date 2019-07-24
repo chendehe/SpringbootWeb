@@ -18,6 +18,13 @@ spring:
     pool-prepared-statements: true
     max-open-prepared-statements: 20
     async-init: true
+  task:
+    execution:
+      pool:
+        core-size: 8
+        max-size: 16
+        queue-capacity: 100
+        keep-alive: 10s
 #  redis:
 #    host: 127.0.0.1
 #    port: 6379
