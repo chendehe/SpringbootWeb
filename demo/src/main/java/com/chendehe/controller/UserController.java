@@ -50,6 +50,7 @@ public class UserController {
   @GetMapping("/list")
   ResponseEntity findAll(Page page) {
     LOGGER.info("[UserController] id is:{}", page);
+//    return ResultUtil.success(restService.findAll(page), HttpStatus.OK);
     return ResultUtil.success(service.findAll(page), HttpStatus.OK);
   }
 
