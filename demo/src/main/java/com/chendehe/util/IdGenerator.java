@@ -7,7 +7,9 @@ public final class IdGenerator {
   private IdGenerator() {
   }
 
-  /** 生成主键id.
+  /**
+   * 生成主键id.
+   *
    * @return 时间戳
    */
   public static String get() {

@@ -6,11 +6,12 @@
 </head>
 
 <body>
-    Welcome<br/><label for="text">消息：</label><input id="text" type="text" />
-    <button onclick="send()">发送消息</button><hr/>
-    <button onclick="subscribe1()">订阅消息</button>
-    <hr/>
-    <div id="message"></div>
+Welcome<br/><label for="text">消息：</label><input id="text" type="text"/>
+<button onclick="send()">发送消息</button>
+<hr/>
+<button onclick="subscribe1()">订阅消息</button>
+<hr/>
+<div id="message"></div>
 </body>
 
 <script src="http://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
@@ -43,7 +44,7 @@
     //发送消息
     function send() {
         var message = document.getElementById('text').value;
-        var messageJson = JSON.stringify({ "name": message });
+        var messageJson = JSON.stringify({"name": message});
         stompClient.send("/app/sendTest", {}, messageJson);
         setMessageInnerHTML("发送的消息:" + message);
     }

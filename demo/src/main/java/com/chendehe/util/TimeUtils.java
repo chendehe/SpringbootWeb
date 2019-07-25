@@ -11,7 +11,6 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
 
@@ -94,7 +93,7 @@ public final class TimeUtils {
     System.out.println(from);
 
     // Date to LocalDateTime
-    LocalDateTime localDateTime =  date.toInstant().atZone(defaultZoneId).toLocalDateTime();
+    LocalDateTime localDateTime = date.toInstant().atZone(defaultZoneId).toLocalDateTime();
     System.out.println(localDateTime);
     // LocalDateTime to Date
     Date out = Date.from(localDateTime.atZone(defaultZoneId).toInstant());

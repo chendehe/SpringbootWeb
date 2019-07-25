@@ -159,7 +159,7 @@ public final class ConfigService {
   /**
    * 添加事件监听
    *
-   * @param group 不能互为前缀
+   * @param group    不能互为前缀
    * @param listener 监听
    */
   public static void addListener(final String group, ChangeConfigListener listener) {

@@ -16,7 +16,8 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @ToString
-@Component@ConfigurationProperties(prefix = "aaa")
+@Component
+@ConfigurationProperties(prefix = "aaa")
 @PropertySource("classpath:config/template.properties")
 public class PropertieConfig {
 

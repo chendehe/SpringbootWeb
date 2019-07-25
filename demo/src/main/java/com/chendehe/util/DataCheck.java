@@ -14,7 +14,7 @@ public final class DataCheck {
   /**
    * 检查空字符串.
    *
-   * @param str 字符串
+   * @param str  字符串
    * @param code 错误编码
    */
   private static void checkStrEmpty(String str, String code, String... param) {
@@ -26,7 +26,7 @@ public final class DataCheck {
   /**
    * 检查trim后的空字符串.
    *
-   * @param str 字符串
+   * @param str  字符串
    * @param code 错误编码
    */
   public static void checkTrimStrEmpty(String str, String code, String... param) {
@@ -39,7 +39,7 @@ public final class DataCheck {
   /**
    * 检查空对象.
    *
-   * @param t 对象
+   * @param t    对象
    * @param code 错误编码
    */
   public static <T> void checkNull(T t, String code, String... param) {
@@ -51,7 +51,7 @@ public final class DataCheck {
   /**
    * 检查空集合.
    *
-   * @param c 集合
+   * @param c    集合
    * @param code 错误编码
    */
   public static void checkCollectionEmpty(Collection c, String code, String... param) {
@@ -63,8 +63,8 @@ public final class DataCheck {
   /**
    * 检查枚举类型.
    *
-   * @param c 枚举类
-   * @param t 枚举对象
+   * @param c    枚举类
+   * @param t    枚举对象
    * @param code 错误编码
    */
   public static <T> void checkEnum(Class<?> c, T t, String code, String... param) {

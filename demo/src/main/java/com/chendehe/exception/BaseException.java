@@ -10,8 +10,9 @@ public class BaseException extends RuntimeException {
 
   /**
    * 自定义异常构造器.
+   *
    * @param errorCode 错误码
-   * @param param 参数
+   * @param param     参数
    */
   BaseException(String errorCode, String... param) {
     super(ErrorMessage.message(errorCode, param));

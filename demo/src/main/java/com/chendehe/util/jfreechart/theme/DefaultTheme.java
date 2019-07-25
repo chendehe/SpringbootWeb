@@ -3,7 +3,6 @@ package com.chendehe.util.jfreechart.theme;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Paint;
-import javax.annotation.PostConstruct;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.StandardChartTheme;
 import org.jfree.chart.plot.DefaultDrawingSupplier;

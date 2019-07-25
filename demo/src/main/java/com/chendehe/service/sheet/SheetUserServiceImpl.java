@@ -4,7 +4,6 @@ import com.chendehe.common.MyConstant;
 import com.chendehe.dao.UserDao;
 import com.chendehe.entity.UserEntity;
 import com.chendehe.util.IdGenerator;
-import com.chendehe.util.TimeUtils;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
