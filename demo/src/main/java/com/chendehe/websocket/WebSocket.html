@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh_CN">
 
 <head>
-    <title>stomp</title>
+    <title>WebSocket-Stomp</title>
 </head>
 
 <body>
-    Welcome<br/><input id="text" type="text" />
-    <button onclick="send()">发送消息</button>
-    <button onclick="subscribe2()">订阅消息/topic/sendTest</button>
-    <button onclick="subscribe1()">订阅消息/topic/subscribeTest</button>
-    <hr/>
-    <button onclick="closeWebSocket()">关闭WebSocket连接</button>
+    Welcome<br/><label for="text">消息：</label><input id="text" type="text" />
+    <button onclick="send()">发送消息</button><hr/>
+    <button onclick="subscribe1()">订阅消息</button>
     <hr/>
     <div id="message"></div>
 </body>
@@ -19,10 +16,10 @@
 <script src="http://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
 <script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
 <script type="text/javascript">
-    // 建立连接对象（还未发起连接）
+    // 建立连接
     var socket = new SockJS("http://localhost:1111/webSocketServer");
 
-    // 获取 STOMP 子协议的客户端对象
+    // 获取 STOMP 客户端
     var stompClient = Stomp.over(socket);
 
     // 向服务器发起websocket连接并发送CONNECT帧
@@ -32,9 +29,9 @@
             // 连接成功时（服务器响应 CONNECTED 帧）的回调方法
             setMessageInnerHTML("连接成功");
             stompClient.subscribe('/app/subscribeTest', function (response) {
-                setMessageInnerHTML("已成功订阅/app/subscribeTest");
+                setMessageInnerHTML("订阅成功");
                 var returnData = JSON.parse(response.body);
-                setMessageInnerHTML("/app/subscribeTest 你接收到的消息为:" + returnData.responseMessage);
+                setMessageInnerHTML("接收到的消息:" + returnData.responseMessage);
             });
         },
         function errorCallBack(error) {
@@ -48,24 +45,15 @@
         var message = document.getElementById('text').value;
         var messageJson = JSON.stringify({ "name": message });
         stompClient.send("/app/sendTest", {}, messageJson);
-        setMessageInnerHTML("/app/sendTest 你发送的消息:" + message);
+        setMessageInnerHTML("发送的消息:" + message);
     }
 
     //订阅消息
     function subscribe1() {
-        stompClient.subscribe('/topic/subscribeTest', function (response) {
-            setMessageInnerHTML("已成功订阅/topic/subscribeTest");
+        stompClient.subscribe('/queue/subscribeTest', function (response) {
+            setMessageInnerHTML("已订阅");
             var returnData = JSON.parse(response.body);
-            setMessageInnerHTML("/topic/subscribeTest 你接收到的消息为:" + returnData.responseMessage);
-        });
-    }
-
-    //订阅消息
-    function subscribe2() {
-        stompClient.subscribe('/topic/sendTest', function (response) {
-            setMessageInnerHTML("已成功订阅/topic/sendTest");
-            var returnData = JSON.parse(response.body);
-            setMessageInnerHTML("/topic/sendTest 你接收到的消息为:" + returnData.responseMessage);
+            setMessageInnerHTML("接收到的消息:" + returnData.responseMessage);
         });
     }
 

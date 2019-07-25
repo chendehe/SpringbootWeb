@@ -1,21 +1,15 @@
 package com.chendehe.websocket;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
- * 
- * @ClassName: ClientMessage
- * @Description: 客户端发送消息实体
- * @author cheng
- * @date 2017年9月27日 下午4:24:11
+ * 客户端消息实体.
  */
+@Getter
+@Setter
+@ToString
 public class ClientMessage {
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+  private String name;
 }
