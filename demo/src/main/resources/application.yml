@@ -25,6 +25,24 @@ spring:
         max-size: 16
         queue-capacity: 100
         keep-alive: 10s
+  kafka:
+    producer:
+      # [!!部署的时候, 这个是要替换的!!]
+      bootstrap-servers: 127.0.0.1:9092
+      client-id: sda-client
+      acks: -1
+      retries: 5
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      compression-type: lz4
+    consumer:
+      bootstrap-servers: 127.0.0.1:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: spring-boot-consumer
+      enable-auto-commit: false
+      auto-offset-reset: latest
+
 #  redis:
 #    host: 127.0.0.1
 #    port: 6379
@@ -52,5 +70,4 @@ logging:
         web:
           servlet:
             DispatcherServlet: info
-
 

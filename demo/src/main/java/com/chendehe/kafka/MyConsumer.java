@@ -12,7 +12,7 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 
 public class MyConsumer {
 
-  private static final String TOPIC = "chendehe1";
+  private static final String TOPIC = "test";
   private static final String URL = "localhost:9092";
 
   public static void main(String[] args) {

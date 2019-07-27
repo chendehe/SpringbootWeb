@@ -9,7 +9,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 
 class MyProducer {
 
-  private static final String TOPIC = "chendehe1";
+  private static final String TOPIC = "test";
   private static final String URL = "localhost:9092";
 
   private MyProducer() {
@@ -31,7 +31,7 @@ class MyProducer {
     Producer<String, String> producer = new KafkaProducer<>(props);
 
     ////////
-    ProducerRecord<String, String> data = new ProducerRecord<>(TOPIC, "K2", "V2");
+    ProducerRecord<String, String> data = new ProducerRecord<>(TOPIC, "a1");
     producer.send(data, (metadata, e) -> {
       if (e != null) {
         e.printStackTrace();
