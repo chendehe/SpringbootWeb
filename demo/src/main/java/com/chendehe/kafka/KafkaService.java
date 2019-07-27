@@ -4,14 +4,13 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
 /**
  * @author CDH
  * @since 2019/7/27 16:42
  */
-@Service
+//@Service
 public class KafkaService {
 
   private KafkaTemplate<String, Object> kafkaTemplate;
