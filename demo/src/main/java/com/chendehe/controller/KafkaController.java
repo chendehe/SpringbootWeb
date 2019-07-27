@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author CDH
  * @since 2019/7/27 16:42
  */
-@RestController
-@RequestMapping("/kafka")
+//@RestController
+//@RequestMapping("/kafka")
 public class KafkaController {
 
   private KafkaService kafkaService;
