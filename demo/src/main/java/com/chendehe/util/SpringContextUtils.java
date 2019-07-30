@@ -6,6 +6,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+/**
+ * 实现 ApplicationContextAware 会调用 setApplicationContext 注入 IoC 容器
+ */
 @Component
 public class SpringContextUtils implements ApplicationContextAware {
 
