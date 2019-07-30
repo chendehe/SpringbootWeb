@@ -6,17 +6,15 @@ import com.chendehe.exception.BaseException;
 import com.chendehe.vo.ErrorResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * 拦截处理异常响应
  */
-@ControllerAdvice
+@RestControllerAdvice
 public class ResponseHandler {
 
-  @ResponseBody
   @ExceptionHandler(value = Exception.class)
   public ResponseEntity handle(Exception e) {
     if (e instanceof BaseException) {
