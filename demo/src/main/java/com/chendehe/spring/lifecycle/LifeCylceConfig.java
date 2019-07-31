@@ -13,9 +13,9 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("com.chendehe.spring.lifecycle")
 public class LifeCylceConfig {
 
-  @Bean(initMethod = "init", destroyMethod = "destroy")
-  Car car() {
-    return new Car();
+  @Bean(initMethod = "initMethod", destroyMethod = "destroyMethod")
+  Cat cat() {
+    return new Cat();
   }
 
 }
