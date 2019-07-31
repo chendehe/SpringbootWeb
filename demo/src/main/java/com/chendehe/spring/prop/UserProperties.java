@@ -18,18 +18,23 @@ import org.springframework.stereotype.Component;
 @Setter
 @ToString
 @Component
-@ConfigurationProperties(prefix = "user")
-@PropertySource("classpath:user.properties")
+//@ConfigurationProperties(prefix = "user")
+@PropertySource(value = {"classpath:user.properties"})
 public final class UserProperties {
     /**
      * 1. 赋值：""
      * 2. SPEL:#{}
      * 3. 配置文件：${}
      */
-    @Value("hehehehe")
-    private String nickname;
-    @Value("#{20-2}")
+    @Value("name jack")
+    private String name;
+
+    @Value("${user.age}")
     private Integer age;
-    @Value("${user.username}")
+
+    @Value("#{'${user.username}'?.toUpperCase()}")
     private String username;
+
+    @Value("${user.desc:default desc}")
+    private String desc;
 }
