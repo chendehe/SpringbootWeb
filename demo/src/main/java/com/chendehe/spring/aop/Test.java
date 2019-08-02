@@ -1,6 +1,5 @@
 package com.chendehe.spring.aop;
 
-import com.chendehe.spring.automatic.MyAuto;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
