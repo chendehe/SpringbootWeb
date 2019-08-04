@@ -15,14 +15,16 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @Configuration
 @ComponentScan("com.chendehe.spring.aop")
 public class Test {
-  public static void main(String[] args) {
-    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Test.class);
-//    for (String name : context.getBeanDefinitionNames()) {
-//      System.out.println(name);
-//    }
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Test.class);
 
-    MyService service = context.getBean(MyService.class);
-    String print = service.print();
-    System.out.println(print);
-  }
+        MyService service = context.getBean(MyService.class);
+        String print = service.print();
+        System.out.println(print);
+    }
+
+    public Test() {
+        System.out.println("new Test()");
+    }
+    
 }
