@@ -11,7 +11,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * @author CDH
  * @since 2019/7/30 19:32
  */
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 @Configuration
 @ComponentScan("com.chendehe.spring.aop")
 public class Test {
@@ -26,5 +26,5 @@ public class Test {
     public Test() {
         System.out.println("new Test()");
     }
-    
+
 }
