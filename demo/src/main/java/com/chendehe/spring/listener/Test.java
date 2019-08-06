@@ -19,10 +19,8 @@ public class Test {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Test.class);
 
         // 发布事件
-        context.publishEvent(new ApplicationEvent("my event") {
-        });
-        
-        context.close();
+        context.publishEvent(new ApplicationEvent("my event") {});
+
     }
 
 }

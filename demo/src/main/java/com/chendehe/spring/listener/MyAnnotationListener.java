@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class MyAnnotationListener {
 
     @EventListener(classes = ApplicationEvent.class)
-    public void toListen(ApplicationEvent event) {
-        System.out.println("MyAnnotationListener->" + event);
+    public void listen(ApplicationEvent event) {
+        System.out.println("@EventListener：" + event);
     }
 }
