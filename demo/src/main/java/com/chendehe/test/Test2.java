@@ -1,7 +1,22 @@
 package com.chendehe.test;
 
 public class Test2 {
-  public static void main(String[] args) {
-    System.out.println((long) (0.5 * 60000000000L));
-  }
+    public static void main(String[] args) {
+        MyFunc car = print2();
+        car.print("123");
+    }
+
+    private static MyFunc print2() {
+        return Test2::print;
+    }
+
+    private static void print(String str) {
+        System.out.println(3213);
+    }
+
+}
+
+@FunctionalInterface
+interface MyFunc {
+    void print(String str);
 }
