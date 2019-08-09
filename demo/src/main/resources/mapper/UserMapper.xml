@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chendehe.mybatis.mybatis.mapper.UserMapper">
+
+    <!--公共的 SQL 片段-->
+    <sql id="userColumns">
+        ${alias}.name,${alias}.gender,${alias}.birthday,${alias}.address
+    </sql>
+    <sql id="sometable">
+        ${prefix}user u
+    </sql>
+    <sql id="someinclude">
+        from
+        <include refid="${include_target}"/>
+    </sql>
+
+    <!--解决列名不匹配， resultType 改为 resultMap="userResultMap"-->
+    <!--<resultMap id="userResultMap" type="User">
+        <id property="id" column="user_id" />
+        <result property="name" column="name"/>
+        <result property="gender" column="gender"/>
+    </resultMap>-->
+
+    <select id="findById" resultType="User">
+        <!--多数据库-->
+        <!--<if test="_databaseId == 'oracle'">
+            select seq_users.nextval from dual
+        </if>
+        <if test="_databaseId == 'db2'">
+            select nextval for seq_users from sysibm.sysdummy1"
+        </if>-->
+        select * from t_user where id = #{id}
+    </select>
+    <select id="findByUser" resultType="User">
+        select
+            <include refid="userColumns"><property name="alias" value="u"/></include>
+        <include refid="someinclude">
+            <property name="prefix" value="t_"/>
+            <property name="include_target" value="sometable"/>
+        </include>
+         <!--where 可以替换原来 1=1 的用法-->
+         <!--定制 where 前缀 <trim prefix="WHERE" prefixOverrides="AND |OR ">-->
+         <!--定制 set 后缀 <trim prefix="SET" suffixOverrides=",">-->
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <choose>
+                <when test="name != null and name !=''">
+                    AND name like #{name}
+                </when>
+                <when test="gender != null">
+                    AND gender = #{gender}
+                </when>
+                <otherwise>
+                    AND address like #{address}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <select id="findMapById" resultType="hashmap">
+        select * from t_user where id = #{id}
+    </select>
+    <insert id="save">
+        insert into t_user (id, name, gender, birthday, address, create_time, update_time) values (#{id}, #{name}, #{gender}, #{birthday}, #{address}, #{createTime}, #{updateTime})
+    </insert>
+    <insert id="saveBath">
+        insert into t_user (id, name, gender, birthday, address, create_time, update_time) values
+        <foreach item="user" collection="users" separator=",">
+            (#{user.id}, #{user.name}, #{user.gender}, #{user.birthday}, #{user.address}, #{user.createTime}, #{user.updateTime})
+        </foreach>
+    </insert>
+    <update id="updateById">
+        update t_user set name = #{name}, gender = #{gender}, birthday = #{birthday}, address = #{address}, update_time = #{updateTime} where id = #{id}
+    </update>
+    <delete id="deleteById">
+        delete from t_user where id = #{id}
+    </delete>
+</mapper>

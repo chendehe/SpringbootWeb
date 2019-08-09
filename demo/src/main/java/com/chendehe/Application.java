@@ -12,7 +12,7 @@ import org.springframework.context.annotation.FilterType;
 
 @SpringBootApplication
 @ComponentScan(excludeFilters = {
-    @Filter(type = FilterType.REGEX, pattern = {"com.chendehe.spring..*"}),
+    @Filter(type = FilterType.REGEX, pattern = {"com.chendehe.spring..*", "com.chendehe.mybatis..*"}),
     @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = FreeMarkerUtils.class)
 })
 //配置druid必须加的注解，如果不加，访问页面打不开，
