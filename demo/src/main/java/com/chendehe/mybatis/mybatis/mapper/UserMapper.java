@@ -3,8 +3,10 @@ package com.chendehe.mybatis.mybatis.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface UserMapper {
     /**
      * 注解方式：@Select("select * from t_user where id = #{id}")
